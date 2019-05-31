@@ -142,10 +142,7 @@
                     <label class="input-group__label" for="goal-description">Description</label>
                     <textarea id="goal-description" class="input-group__field"></textarea>
                 </div>
-                <div class="prompt">
-                    <a class="prompt__cancel" href="#cancel">Cancel</a>
-                    <button class="btn btn--primary prompt__confirm" type="submit">Create Goal</button>
-                </div>
+                  <%= render(partial: 'prompt', locals: { prompt_label: 'Create Goal'}) %>
             </form>
         </div>
     </section>
@@ -168,10 +165,7 @@
                     <label class="input-group__label" for="profile-description">Description</label>
                     <textarea id="profile-description" class="input-group__field"></textarea>
                 </div>
-                <div class="prompt">
-                    <a class="prompt__cancel" href="#cancel">Cancel</a>
-                    <button class="btn btn--primary prompt__confirm" type="submit">Update profile</button>
-                </div>
+                <%= render(partial: 'prompt', locals: { prompt_label: 'Update profile'}) %>
             </form>
         </div>
     </section>
@@ -290,10 +284,7 @@
                     <label class="input-group__label" for="repeat-password">Confirm new password</label>
                     <input id="repeat-password" class="input-group__field" type="password" name="repeat-password">
                 </div>
-                <div class="prompt">
-                    <a class="prompt__cancel" href="#cancel">Cancel</a>
-                    <button class="btn btn--primary prompt__confirm" type="submit">Update account settings</button>
-                </div>
+                <%= render(partial: 'prompt', locals: { prompt_label: 'Update account settings'}) %>
             </form>
         </div>
     </section>
