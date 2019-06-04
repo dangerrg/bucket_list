@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get 'styles/molecules'
   get 'styles/organisms'
   get 'ideas/index'
+  get '/ideas/new'
+  post '/ideas/create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
