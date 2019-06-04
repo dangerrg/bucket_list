@@ -15,7 +15,7 @@
           <div class="logo">
             <%= link_to('<span><i>My</i> Bucket List</span>'.html_safe, root_path) %>
           </div>
-          <%= form_tag(ideas_index_path) do %>
+          <%= form_tag(ideas_index_path, method: :get) do %>
             <div class="input-inline">
               <label class="input-group__label sr-only" for="global-search-input">Looking for inspiration?</label>
               <div class="input-row">
