@@ -84,7 +84,7 @@
       <ul class="bare-list float-grid css-grid">
         <% ["Card title 1", "Card title 2", "Card title 3", "Card title 4"].each do |item| %>
           <li>
-            <%= render(partial: 'idea_card', locals: { card_title: item}) %>
+            <%= render(partial: 'idea_card', locals: { card_title: item, done_count: 25 }) %>
           </li>
         <% end %>
       </ul>
