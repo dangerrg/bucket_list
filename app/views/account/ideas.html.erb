@@ -7,9 +7,11 @@
   </div>
   <div class="content-wrapper">
     <ul class="bare-list float-grid css-grid">
+      <%# Iterates over all of the ideas to render the editable_idea_card for each idea in the collection
+       and also pass idea instance to the partial%>
       <% @ideas.each do |idea| %>
         <li>
-           <%= render(partial: 'editable_idea_card', locals: { title: idea.title }) %>
+           <%= render(partial: 'editable_idea_card', locals: { title: idea.title, idea: idea }) %>
         </li>
       <% end %>
     </ul>
