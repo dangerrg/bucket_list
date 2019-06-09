@@ -18,10 +18,13 @@ class IdeasController < ApplicationController
   end
 
   def edit
-    id = params[:id]
+    id = params[:id] # extract the identifier from the params Hash
     @idea = Idea.find(id)
   end
 
   def update
+    # retrieve the instance using the identifier
+    idea = Idea.find(params[:id])
+    redirect_to(account_ideas_path)
   end
 end
