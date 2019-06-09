@@ -11,7 +11,7 @@
        and also pass idea instance to the partial%>
       <% @ideas.each do |idea| %>
         <li>
-           <%= render(partial: 'editable_idea_card', locals: { title: idea.title, idea: idea }) %>
+           <%= render(partial: 'editable_idea_card', locals: { idea: idea }) %> 
         </li>
       <% end %>
     </ul>
