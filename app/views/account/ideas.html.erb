@@ -1,7 +1,7 @@
 <main>
   <div class="content-wrapper">
     <div class="page-header">
-      <h1>My Idea</h1>
+      <h1>My Ideas</h1>
       <%= link_to('Create Idea', ideas_new_path, class: 'btn') %>
     </div>
   </div>
@@ -11,7 +11,7 @@
        and also pass idea instance to the partial%>
       <% @ideas.each do |idea| %>
         <li>
-           <%= render(partial: 'editable_idea_card', locals: { idea: idea }) %> 
+           <%= render(partial: 'editable_idea_card', locals: { idea: idea }) %>
         </li>
       <% end %>
     </ul>
