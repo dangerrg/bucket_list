@@ -85,7 +85,7 @@
         <% ["Card title 1", "Card title 2", "Card title 3", "Card title 4"].each do |item| %>
           <li>
             <%= render(partial: 'idea_card',
-                       locals: { card_title: item, done_count: 25, photo_url: 'http://fpoimg.com/255x170' }) %>
+                       locals: { card_title: item, done_count: 25, photo_url: 'http://fpoimg.com/255x170', idea: 1 }) %>
           </li>
         <% end %>
       </ul>
