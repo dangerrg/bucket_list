@@ -9,4 +9,18 @@ class IdeasTest < ApplicationSystemTestCase
     click_on('Create idea')
     assert page.has_content?('Skydiving in Interlaken')
   end
+
+  test 'that Ideas are loaded in the index' do
+    first_idea = Idea.new
+    first_idea.title = 'Cycle across Australia'
+    first_idea.save!
+
+    second_idea = Idea.new
+    second_idea.title = 'See a giraffe in the wild'
+    second_idea.save!
+
+    visit(ideas_index_path)
+    assert page.has_content?('Cycle across Australia')
+    assert page.has_content?('See a giraffe in the wild')
+  end
 end
