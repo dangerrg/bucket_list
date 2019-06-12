@@ -15,12 +15,12 @@ class SimpleNavigationsTest < ApplicationSystemTestCase
     assert page.has_content?('Style guide')
     assert page.has_content?('Atoms')
     assert page.has_content?('Molecules')
+    assert page.has_content?('Organisms')
     click_on('Molecules', match: :first)
-    assert current_url.include?('/styles/molecules')
     assert page.has_content?('Card')
+    click_on('Organisms', match: :first)
+    assert page.has_content?('Create goal')
     click_on('My Bucket List', match: :first)
-    assert current_url.include?('/')
-    click_on('Account')
-    assert page.has_content?('My Ideas')
+    assert page.has_content?('Some ideas')
   end
 end
