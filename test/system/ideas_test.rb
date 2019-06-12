@@ -7,5 +7,6 @@ class IdeasTest < ApplicationSystemTestCase
     fill_in('done_count', with: 65)
     fill_in('photo_url', with: 'http://monkeychute.co/wp-content/uploads/2018/01/skydive-interlaken.jpg')
     click_on('Create idea')
+    assert page.has_content?('Skydiving in Interlaken')
   end
 end
