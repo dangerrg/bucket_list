@@ -1,33 +1,28 @@
 <div class="card">
   <div class="card__thumb">
     <a href="ideas/one-example-idea.html">
-      <% if(photo_url.nil?) %>
-        <%# use conditional to avoid error when the existing images have no values %>
-          <img src="http://fpoimg.com/255x170" alt="Northern lights over mountain covered in snow">
-        <% else %>
-          <%= image_tag(photo_url) %>
-        <% end %>
-      </a>
-      <div class="card__intro">
-        <h4 class="card__title">
-          <%= card_title %>
-        </h4>
-        <span><%= done_count %>
-          have done this</span>
-      </div>
-    </div>
-    <div class="card__footer">
-      <button class="card__btn card__like delta" data-like="see-the-northern-lights">
-        <svg class="icon-heart icon-heart--liked" role="presentation">
-          <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#heart") %>"></use>
-        </svg>
-        Like
-      </button>
-      <button class="card__btn card__add delta" data-addgoal="see-the-northern-lights">
-        <svg class="icon-pluss" role="presentation">
-          <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#pluss") %>"></use>
-        </svg>
-        Add Goal
-      </button>
+      render(partial: 'idea_photo', locals: { photo_url: photo_url })
+    </a>
+    <div class="card__intro">
+      <h4 class="card__title">
+        <%= card_title %>
+      </h4>
+      <span><%= done_count %>
+        have done this</span>
     </div>
   </div>
+  <div class="card__footer">
+    <button class="card__btn card__like delta" data-like="see-the-northern-lights">
+      <svg class="icon-heart icon-heart--liked" role="presentation">
+        <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#heart") %>"></use>
+      </svg>
+      Like
+    </button>
+    <button class="card__btn card__add delta" data-addgoal="see-the-northern-lights">
+      <svg class="icon-pluss" role="presentation">
+        <use xlink:href="<%= asset_url("icons/icons-defs.svg" + "#pluss") %>"></use>
+      </svg>
+      Add Goal
+    </button>
+  </div>
+</div>
