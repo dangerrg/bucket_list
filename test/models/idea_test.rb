@@ -44,4 +44,14 @@ class IdeaTest < ActiveSupport::TestCase
     idea.save!
     refute_equal(idea.updated_at, first_updated_at)
   end
+
+  test 'updated_at is changed after updating photo_url' do
+    idea = Idea.new
+    idea.photo_url = '/images/turtle.jpg'
+    idea.save!
+    first_updated_at = idea.updated_at
+    idea.photo_url = '/images/turtle-big.jpg'
+    idea.save!
+    refute_equal(idea.updated_at, first_updated_at)
+  end
 end
