@@ -61,4 +61,18 @@ class IdeasTest < ApplicationSystemTestCase
     visit(ideas_index_path)
     assert page.has_content?('No ideas found')
   end
+
+  test 'homepage highlights' do
+    4.times do |i|
+      idea = Idea.new
+      idea.title = "Title Idea #{i + 1}"
+      idea.save!
+    end
+    visit(root_path)
+
+    assert page.has_content?('Title Idea 4')
+    assert page.has_content?('Title Idea 3')
+    assert page.has_content?('Title Idea 2')
+    refute page.has_content?('Title Idea 1')
+  end
 end
