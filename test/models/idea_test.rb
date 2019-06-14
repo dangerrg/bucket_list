@@ -59,14 +59,14 @@ class IdeaTest < ActiveSupport::TestCase
     idea = Idea.new
     idea.title = 'Stand at the top of the Empire State Building'
     idea.save!
-    assert_equal Idea.search("the top").length, 1
+    assert_equal Idea.search('the top').length, 1
   end
 
   test 'No matching result' do
     idea = Idea.new
     idea.title = 'Stand at the top of the Empire State Building'
     idea.save!
-    assert_empty Idea.search("snorkelling")
+    assert_empty Idea.search('snorkelling')
   end
 
   test 'Two matching result' do
@@ -76,6 +76,33 @@ class IdeaTest < ActiveSupport::TestCase
     idea_2 = Idea.new
     idea_2.title = 'Stand on the pyramids'
     idea_2.save!
-    assert_equal Idea.search("Stand").length, 2
+    assert_equal Idea.search('Stand').length, 2
+  end
+
+  test 'most_recent with no Ideas' do
+    assert_empty Idea.most_recent
+  end
+
+  test 'most_recent with two Ideas' do
+    idea_1 = Idea.new
+    idea_1.title = 'Title idea_1'
+    idea_1.save!
+    idea_2 = Idea.new
+    idea_2.title = 'Title idea_2'
+    idea_2.save!
+
+    assert_equal Idea.most_recent.length, 2
+    assert_equal Idea.most_recent.first, idea_2
+  end
+
+  test 'most_recent with six Ideas' do
+    6.times do |i|
+      idea = Idea.new
+      idea.title = "Title Idea #{i + 1}"
+      idea.save!
+    end
+
+    assert_equal Idea.most_recent.length, 3
+    assert_equal Idea.most_recent.first.title, 'Title Idea 6'
   end
 end
