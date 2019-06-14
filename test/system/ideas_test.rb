@@ -43,17 +43,22 @@ class IdeasTest < ApplicationSystemTestCase
     idea_1 = Idea.new
     idea_1.title = 'Climb Mont Blanc'
     idea_1.save!
-    
+
     idea_1 = Idea.new
     idea_1.title = 'Visit Niagara Falls'
     idea_1.save!
-    
+
     visit(root_path)
-    fill_in('q',	with: "Mont")
+    fill_in('q',	with: 'Mont')
     click_on('Search', match: :first)
-    
+
     assert current_path.include?(ideas_index_path)
     assert page.has_content?('Climb Mont Blanc')
     refute page.has_content?('Visit Niagara Falls')
+  end
+
+  test 'No search results' do
+    visit(ideas_index_path)
+    assert page.has_content?('No ideas found')
   end
 end
