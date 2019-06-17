@@ -31,4 +31,10 @@ class IdeasController < ApplicationController
     idea.update(params)
     redirect_to(account_ideas_path)
   end
+
+  private
+
+  def ideas_params
+  
+  end
 end
