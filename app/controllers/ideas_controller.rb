@@ -11,7 +11,9 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
   end
 
-  def new; end
+  def new
+    @idea = Idea.new
+  end
 
   def create
     idea = Idea.new(ideas_params)
