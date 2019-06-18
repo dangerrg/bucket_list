@@ -99,4 +99,11 @@ class IdeasTest < ApplicationSystemTestCase
     assert page.has_content?('Visit Provence')
     refute page.has_content?('Overnight hike in Switzerland')
   end
+
+  test 'new idea with no title' do
+    visit(new_idea_path)
+    fill_in('Done count', with: 32)
+    click_on('Create Idea')
+    assert page.has_content?("Title can't be blank")
+  end
 end
