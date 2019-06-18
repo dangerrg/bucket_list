@@ -30,8 +30,8 @@ class IdeasTest < ApplicationSystemTestCase
     new_idea = Idea.new
     new_idea.save!
     visit(edit_idea_path(new_idea))
-    fill_in('done_count', with: 10)
-    fill_in('title', with: 'Build an amazing web app')
+    fill_in('Done count', with: 10)
+    fill_in('Title', with: 'Build an amazing web app')
     click_on('Update idea')
     click_on('Build an amazing web app')
 
