@@ -5,10 +5,10 @@ require 'application_system_test_case'
 class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
     visit(new_idea_path)
-    fill_in('title', with: 'Skydiving in Interlaken')
-    fill_in('done_count', with: 65)
-    fill_in('photo_url', with: 'http://monkeychute.co/wp-content/uploads/2018/01/skydive-interlaken.jpg')
-    click_on('Create idea')
+    fill_in('Title', with: 'Skydiving in Interlaken')
+    fill_in('Done count', with: 65)
+    fill_in('Photo url', with: 'http://monkeychute.co/wp-content/uploads/2018/01/skydive-interlaken.jpg')
+    click_on('Create Idea')
     assert page.has_content?('Skydiving in Interlaken')
   end
 
@@ -32,7 +32,7 @@ class IdeasTest < ApplicationSystemTestCase
     visit(edit_idea_path(new_idea))
     fill_in('Done count', with: 10)
     fill_in('Title', with: 'Build an amazing web app')
-    click_on('Update idea')
+    click_on('Update Idea')
     click_on('Build an amazing web app')
 
     assert page.has_content?('Build an amazing web app')
