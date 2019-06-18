@@ -132,4 +132,9 @@ class IdeaTest < ActiveSupport::TestCase
     idea = Idea.new title: 'Hike the mountains in Italy, See the Dolomites and Italian Alps, hjcgslkjchcld uchlwiuchwcw;kcj;wkjc;e'
     refute idea.valid?
   end
+
+  test 'presence of title' do
+    idea = Idea.new
+    refute idea.valid?
+  end
 end
