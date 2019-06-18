@@ -106,4 +106,13 @@ class IdeasTest < ApplicationSystemTestCase
     click_on('Create Idea')
     assert page.has_content?("Title can't be blank")
   end
+
+  test 'exciting idea update with no title' do
+    idea = Idea.new title: 'Exciting idea!'
+    idea.save!
+    visit(edit_idea_path(idea))
+    fill_in('Title', with: '')
+    click_on('Update Idea')
+    assert page.has_content?("Title can't be blank")
+  end
 end
