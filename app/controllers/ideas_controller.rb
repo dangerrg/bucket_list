@@ -11,13 +11,12 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
   end
 
-  def new
-  end
+  def new; end
 
   def create
     idea = Idea.new(ideas_params)
     idea.save!
-    redirect_to(ideas_index_path)
+    redirect_to(ideas_path)
   end
 
   def edit
