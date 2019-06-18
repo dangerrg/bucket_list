@@ -16,7 +16,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    idea = Idea.new(ideas_params)
+    idea = Idea.new(idea_resource_params)
     idea.save!
     redirect_to(ideas_path)
   end
@@ -34,10 +34,6 @@ class IdeasController < ApplicationController
   end
 
   private
-
-  def ideas_params
-    params.permit(:title, :description, :photo_url, :done_count, :name_of_user)
-  end
 
   def idea_resource_params
     params.require(:idea).permit(:title, :description, :photo_url, :done_count, :name_of_user)
