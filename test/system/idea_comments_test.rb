@@ -10,5 +10,6 @@ class IdeaCommentsTest < ApplicationSystemTestCase
     fill_in('Add a comment', with: 'This idea has been commented')
     click_on('Post', match: :first)
     assert_equal idea_path(idea), page.current_path
+    assert page.has_content?('This idea has been commented')
   end
 end
