@@ -7,7 +7,7 @@ class CommentTest < ActiveSupport::TestCase
     idea = Idea.new title: 'Learn digicupunture'
     idea.save!
 
-    comment = Comment.new body: "I'd like to do this!", idea: idea
+    comment = Comment.new body: "I'd like to do this!", idea: idea, user: User.new
     comment.save!
 
     idea_2 = Idea.new title: 'Learn advance math'
@@ -23,7 +23,7 @@ class CommentTest < ActiveSupport::TestCase
     idea = Idea.new title: 'Exiciting idea'
     idea.save!
 
-    comment = Comment.new body: 'Great idea!'
+    comment = Comment.new body: 'Great idea!', user: User.new
     idea.comments << comment
     idea.save!
 
@@ -34,8 +34,8 @@ class CommentTest < ActiveSupport::TestCase
     idea = Idea.new title: 'Awesome idea'
     idea.save!
 
-    comment = Comment.new body: "I'd like to do this!"
-    another_comment = Comment.new body: "I agree! I'd like to do this as well"
+    comment = Comment.new body: "I'd like to do this!", user: User.new
+    another_comment = Comment.new body: "I agree! I'd like to do this as well", user: User.new
 
     idea.comments << comment
     idea.comments << another_comment
