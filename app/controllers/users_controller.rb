@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create 
+  def create
+    user = User.find_or_create_by(user_params)
+    redirect_to ideas_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email)
   end
 end
