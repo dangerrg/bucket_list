@@ -11,4 +11,13 @@ class LogInsTest < ApplicationSystemTestCase
     assert_equal 1, User.all.length
     assert_equal 'new@epfl.ch', User.first.email
   end
+
+  test 'log in does not create a User' do
+    user = User.new email: 'martha@epfl.ch'
+    user.save!
+    visit(new_user_path)
+    fill_in('Email', with: user.email)
+    click_on('Log in')
+    assert_equal 1, User.all.length
+  end
 end
