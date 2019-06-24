@@ -4,6 +4,13 @@ require 'application_system_test_case'
 
 class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
+    user = User.new email: 'test@epfl.ch'
+    user.save!
+
+    visit(new_user_path)
+    fill_in('Email', with: user.email)
+    click_on('Log in')
+
     visit(new_idea_path)
     fill_in('Title', with: 'Skydiving in Interlaken')
     fill_in('Done count', with: 65)
@@ -98,6 +105,13 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'new idea with no title' do
+    user = User.new email: 'test@epfl.ch'
+    user.save!
+
+    visit(new_user_path)
+    fill_in('Email', with: user.email)
+    click_on('Log in')
+
     visit(new_idea_path)
     fill_in('Done count', with: 32)
     click_on('Create Idea')
