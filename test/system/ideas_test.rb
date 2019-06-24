@@ -13,12 +13,12 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'that Ideas are loaded in the index' do
-    first_idea = Idea.new
-    first_idea.title = 'Cycle across Australia'
+    first_idea = Idea.new title: 'Cycle across Australia',
+                          user: User.new
     first_idea.save!
 
-    second_idea = Idea.new
-    second_idea.title = 'See a giraffe in the wild'
+    second_idea = Idea.new title: 'See a giraffe in the wild',
+                           user: User.new
     second_idea.save!
 
     visit(ideas_path)
@@ -27,7 +27,7 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'Test for editing ideas' do
-    new_idea = Idea.new title: 'Unedited new idea'
+    new_idea = Idea.new title: 'Unedited new idea', user: User.new
     new_idea.save!
     visit(edit_idea_path(new_idea))
     fill_in('Done count', with: 10)
@@ -40,12 +40,10 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'search' do
-    idea_1 = Idea.new
-    idea_1.title = 'Climb Mont Blanc'
+    idea_1 = Idea.new title: 'Climb Mont Blanc', user: User.new
     idea_1.save!
 
-    idea_1 = Idea.new
-    idea_1.title = 'Visit Niagara Falls'
+    idea_1 = Idea.new title: 'Visit Niagara Falls', user: User.new
     idea_1.save!
 
     visit(root_path)
@@ -64,8 +62,7 @@ class IdeasTest < ApplicationSystemTestCase
 
   test 'homepage highlights' do
     4.times do |i|
-      idea = Idea.new
-      idea.title = "Title Idea #{i + 1}"
+      idea = Idea.new title: "Title Idea #{i + 1}", user: User.new
       idea.save!
     end
     visit(root_path)
@@ -77,17 +74,17 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'when searching by title and description' do
-    idea_1 = Idea.new
-    idea_1.title = 'Go cycling across Europe'
-    idea_1.description = 'An amazing way to see lots of Europe'
+    idea_1 = Idea.new title: 'Go cycling across Europe',
+                      description: 'An amazing way to see lots of Europe',
+                      user: User.new
     idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = 'Visit Provence'
-    idea_2.description = 'Go to vineyards, go cycling up Mont Ventoux, see the fields of lavender'
+    idea_2 = Idea.new title: 'Visit Provence',
+                      description: 'Go to vineyards, go cycling up Mont Ventoux, see the fields of lavender',
+                      user: User.new
     idea_2.save!
-    idea_3 = Idea.new
-    idea_3.title = 'Overnight hike in Switzerland'
-    idea_3.description = 'Stay in a Swiss refuge in the mountains'
+    idea_3 = Idea.new title: 'Overnight hike in Switzerland',
+                      description: 'Stay in a Swiss refuge in the mountains',
+                      user: User.new
     idea_3.save!
 
     visit(root_path)
@@ -108,7 +105,7 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'exciting idea update with no title' do
-    idea = Idea.new title: 'Exciting idea!'
+    idea = Idea.new title: 'Exciting idea!', user: User.new
     idea.save!
     visit(edit_idea_path(idea))
     fill_in('Title', with: '')

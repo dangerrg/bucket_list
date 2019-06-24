@@ -4,9 +4,9 @@ require 'application_system_test_case'
 
 class ShowIdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
-    my_idea = Idea.new
-    my_idea.title = 'Visit Canarias'
-    my_idea.done_count = 3200
+    my_idea = Idea.new title: 'Visit Canarias',
+                       done_count: 3200,
+                       user: User.new
     my_idea.save!
 
     visit(idea_path(my_idea))
