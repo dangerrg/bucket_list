@@ -4,30 +4,30 @@ require 'test_helper'
 
 class IdeaTest < ActiveSupport::TestCase
   test 'the first empty Idea created is first in the list' do
-    first_idea = Idea.new title: 'First title'
+    first_idea = Idea.new title: 'First title', user: User.new
     first_idea.save!
-    second_idea = Idea.new title: 'Second title'
+    second_idea = Idea.new title: 'Second title', user: User.new
     second_idea.save!
     assert_equal(first_idea, Idea.all.first)
   end
 
   test 'the first complete Idea created is first in the list' do
-    first_idea = Idea.new
-    first_idea.title = 'Cycle the length of the United Kingdom'
-    first_idea.photo_url = 'http://mybucketlist.ch/an_image.jpg'
-    first_idea.done_count = 12
+    first_idea = Idea.new title: 'Cycle the length of the United Kingdom',
+                          photo_url: 'http://mybucketlist.ch/an_image.jpg',
+                          done_count: 12,
+                          user: User.new
     first_idea.save!
-    second_idea = Idea.new
-    second_idea.title = 'Visit Japan'
-    second_idea.photo_url = 'http://mybucketlist.ch/second_image.jpg'
-    second_idea.done_count = 3
+    second_idea = Idea.new title: 'Visit Japan',
+                           photo_url: 'http://mybucketlist.ch/second_image.jpg',
+                           done_count: 3,
+                           user: User.new
     second_idea.save!
     assert_equal(first_idea, Idea.all.first)
   end
 
   test 'updated_at is changed after updating title' do
-    idea = Idea.new
-    idea.title = 'Visit Marrakech'
+    idea = Idea.new title: 'Visit Marrakech',
+                    user: User.new
     idea.save!
     first_updated_at = idea.updated_at
     idea.title = 'Visit the market in Marrakech'
@@ -36,8 +36,9 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'updated_at is changed after updating done_count' do
-    idea = Idea.new title: 'Idea'
-    idea.done_count = 123
+    idea = Idea.new title: 'Idea',
+                    done_count: 123,
+                    user: User.new
     idea.save!
     first_updated_at = idea.updated_at
     idea.done_count = 456
@@ -46,8 +47,9 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'updated_at is changed after updating photo_url' do
-    idea = Idea.new title: 'Interesting idea!'
-    idea.photo_url = '/images/turtle.jpg'
+    idea = Idea.new title: 'Interesting idea!',
+                    photo_url: '/images/turtle.jpg',
+                    user: User.new
     idea.save!
     first_updated_at = idea.updated_at
     idea.photo_url = '/images/turtle-big.jpg'
@@ -56,25 +58,25 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'One matching result' do
-    idea = Idea.new
-    idea.title = 'Stand at the top of the Empire State Building'
+    idea = Idea.new title: 'Stand at the top of the Empire State Building',
+                    user: User.new
     idea.save!
     assert_equal Idea.search('the top').length, 1
   end
 
   test 'No matching result' do
-    idea = Idea.new
-    idea.title = 'Stand at the top of the Empire State Building'
+    idea = Idea.new title: 'Stand at the top of the Empire State Building',
+                    user: User.new
     idea.save!
     assert_empty Idea.search('snorkelling')
   end
 
   test 'Two matching result' do
-    idea_1 = Idea.new
-    idea_1.title = 'Stand at the top of the Empire State Building'
+    idea_1 = Idea.new title: 'Stand at the top of the Empire State Building',
+                      user: User.new
     idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = 'Stand on the pyramids'
+    idea_2 = Idea.new title: 'Stand on the pyramids',
+                      user: User.new
     idea_2.save!
     assert_equal Idea.search('Stand').length, 2
   end
@@ -84,11 +86,9 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'most_recent with two Ideas' do
-    idea_1 = Idea.new
-    idea_1.title = 'Title idea_1'
+    idea_1 = Idea.new title: 'Title idea_1', user: User.new
     idea_1.save!
-    idea_2 = Idea.new
-    idea_2.title = 'Title idea_2'
+    idea_2 = Idea.new title: 'Title idea_2', user: User.new
     idea_2.save!
 
     assert_equal Idea.most_recent.length, 2
@@ -97,8 +97,8 @@ class IdeaTest < ActiveSupport::TestCase
 
   test 'most_recent with six Ideas' do
     6.times do |i|
-      idea = Idea.new
-      idea.title = "Title Idea #{i + 1}"
+      idea = Idea.new title: "Title Idea #{i + 1}",
+                      user: User.new
       idea.save!
     end
 
@@ -107,29 +107,30 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test 'when description match' do
-    idea = Idea.new
-    idea.title = 'Surfing in Portugal'
-    idea.description = 'See what Atlantic coast waves are like!'
+    idea = Idea.new title: 'Surfing in Portugal',
+                    description: 'See what Atlantic coast waves are like!',
+                    user: User.new
     idea.save!
 
     assert_equal 1, Idea.search('coast').length
   end
 
   test 'when description and title match' do
-    idea_one = Idea.new
-    idea_one.title = 'Overnight hike in Switzerland'
-    idea_one.description = 'Stay in a Swiss refuge in the mountains'
+    idea_one = Idea.new title: 'Overnight hike in Switzerland',
+                        description: 'Stay in a Swiss refuge in the mountains',
+                        user: User.new
     idea_one.save!
-    idea_two = Idea.new
-    idea_two.title = 'Hike the mountains in Italy'
-    idea_two.description = 'See the Dolomites and Italian Alps.'
+    idea_two = Idea.new title: 'Hike the mountains in Italy',
+                        description: 'See the Dolomites and Italian Alps.',
+                        user: User.new
     idea_two.save!
 
     assert_equal 2, Idea.search('mountains').length
   end
 
   test 'maximum length of title' do
-    idea = Idea.new title: 'Hike the mountains in Italy, See the Dolomites and Italian Alps, hjcgslkjchcld uchlwiuchwcw;kcj;wkjc;e'
+    idea = Idea.new title: 'Hike the mountains in Italy, See the Dolomites and Italian Alps, hjcgslkjchcld uchlwiuchwcw;kcj;wkjc;e',
+                    user: User.new
     refute idea.valid?
   end
 
