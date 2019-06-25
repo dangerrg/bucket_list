@@ -23,12 +23,15 @@
               <% end %>
             </li>
             <li>
-              <button class="btn delta" type="button">
-                <svg class="icon-heart icon--sm" role="presentation">
-                  <!-- <use xlink:href="images/icons-defs.svg#heart"></use> -->
-                </svg>
-                Add
-              </button>
+              <%= form_tag(user_goals_path(@user)) do %>
+                <%= hidden_field_tag('idea_id', @idea.id) %>
+                <%= button_tag(class: 'btn delta', type: 'submit') do %>
+                  <svg class="icon-heart icon--sm" role="presentation">
+                    <!-- <use xlink:href="images/icons-defs.svg#heart"></use> -->
+                  </svg>
+                  Add
+                <% end %>
+              <% end %>
             </li>
           </ul>
           <div class="goal__intro">
@@ -69,7 +72,7 @@
   <div class="content-wrapper">
     <div class="comments">
       <h2 class="comments__title">Discussion<span>3 comments</span></h2>
-      
+
       <% if(@display_add_comment) %>
         <%= form_for([@idea, @comment], html: { class: 'comments__input' }) do |form| %>
           <%= image_tag('avatar', alt: 'Default avatar') %>
