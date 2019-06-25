@@ -14,6 +14,7 @@ class IdeasController < ApplicationController
 
     if(session[:user_id].present?) #check whether users are logged in or not
       @user = User.find(session[:user_id])
+      @disable_add_goal = @user.goals.exists?(@idea.id)
     else
       @user = nil
     end
