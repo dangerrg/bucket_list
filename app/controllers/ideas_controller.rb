@@ -11,6 +11,12 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
     @comment = Comment.new
     @display_add_comment = session[:user_id].present?
+
+    if(session[:user_id].present?) #check whether users are logged in or not
+      @user = User.find(session[:user_id])
+    else
+      @user = nil
+    end
   end
 
   def new
