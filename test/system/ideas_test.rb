@@ -34,7 +34,8 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'Test for editing ideas' do
-    new_idea = Idea.new title: 'Unedited new idea', user: User.new
+    user = User.new email: 'new@epfl.ch', password: 'password'
+    new_idea = Idea.new title: 'Unedited new idea', user: user
     new_idea.save!
     visit(edit_idea_path(new_idea))
     fill_in('Done count', with: 10)
