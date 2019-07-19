@@ -15,6 +15,7 @@
           <div class="logo">
             <%= link_to('<span><i>My</i> Bucket List</span>'.html_safe, root_path) %>
           </div>
+          <%= render(partial: 'search_form') %>
           <% if(logged_in?) %>
             <%= render partial: 'authenticated_user_header' %>
           <% else %>
