@@ -1,13 +1,12 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   def new
     @user = User.new
   end
 
   def create
-    user = User.find_or_create_by(user_params)
-    session[:user_id] = user.id
+    @user = User.new(user_params)
+    @user.save
+    session[:user_id] = @user.id
     redirect_to ideas_path
   end
 
