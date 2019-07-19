@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'styles/organisms'
 
-  resources :sessions, only [:new, :create]
+  resources :sessions, only: [:new, :create]
 
   resources :users do
     resources :goals
