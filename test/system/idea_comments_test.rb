@@ -1,18 +1,17 @@
-# frozen_string_literal: true
-
 require 'application_system_test_case'
 
 class IdeaCommentsTest < ApplicationSystemTestCase
   test 'adding a Comment to an Idea' do
-    user = User.new email: 'user_email@epfl.ch'
+    user = User.new email: 'user_email@epfl.ch', password: 'password'
     user.save!
 
     idea = Idea.new title: 'Commented idea', user: user
     idea.save
 
-    visit(new_user_path)
+    visit(new_session_path)
     fill_in('Email', with: user.email)
-    click_on('Log in')
+    fill_in('Password', with: user.password)
+    click_on('Log in', match: :smart)
 
     visit(idea_path(idea))
     fill_in('Add a comment', with: 'This idea has been commented')

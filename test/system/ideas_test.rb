@@ -1,14 +1,13 @@
-# frozen_string_literal: true
-
 require 'application_system_test_case'
 
 class IdeasTest < ApplicationSystemTestCase
   test 'create new idea' do
-    user = User.new email: 'test@epfl.ch'
+    user = User.new email: 'test@epfl.ch', password: 'password'
     user.save!
 
-    visit(new_user_path)
+    visit(new_session_path)
     fill_in('Email', with: user.email)
+    fill_in('Password', with: user.password)
     click_on('Log in')
 
     visit(new_idea_path)
@@ -29,6 +28,7 @@ class IdeasTest < ApplicationSystemTestCase
     second_idea.save!
 
     visit(ideas_path)
+
     assert page.has_content?('Cycle across Australia')
     assert page.has_content?('See a giraffe in the wild')
   end
@@ -73,6 +73,7 @@ class IdeasTest < ApplicationSystemTestCase
       idea = Idea.new title: "Title Idea #{i + 1}", user: User.new
       idea.save!
     end
+
     visit(root_path)
 
     assert page.has_content?('Title Idea 4')
@@ -86,10 +87,12 @@ class IdeasTest < ApplicationSystemTestCase
                       description: 'An amazing way to see lots of Europe',
                       user: User.new
     idea_1.save!
+
     idea_2 = Idea.new title: 'Visit Provence',
                       description: 'Go to vineyards, go cycling up Mont Ventoux, see the fields of lavender',
                       user: User.new
     idea_2.save!
+
     idea_3 = Idea.new title: 'Overnight hike in Switzerland',
                       description: 'Stay in a Swiss refuge in the mountains',
                       user: User.new
@@ -106,11 +109,12 @@ class IdeasTest < ApplicationSystemTestCase
   end
 
   test 'new idea with no title' do
-    user = User.new email: 'test@epfl.ch'
+    user = User.new email: 'test@epfl.ch', password: 'password'
     user.save!
 
-    visit(new_user_path)
+    visit(new_session_path)
     fill_in('Email', with: user.email)
+    fill_in('Password', with: user.password)
     click_on('Log in')
 
     visit(new_idea_path)
