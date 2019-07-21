@@ -1,6 +1,7 @@
-Tasks Unit 09. Defining a custom helper method
+Tasks Unit 11. Securing owned resources
 
-1. Create the `app/views/account/_goal_card.html.erb` partial. Use the attached static HTML as a template and complete all of the dynamic text in the partial. Use a partial parameter, `goal`, for all of the dynamic fields but remember that this variable is an instance of an _Idea_. Look at  `application/_idea_card.html.erb` and `account/_editable_idea_card.html.erb` for reference to implement the partial.
-2. Make use of the `_goal_card` partial within the `account/goals.html.erb` view to render all of a User's goals.
-3. Create a helper method `can_edit?` within the ApplicationHelper that will take one parameter, `goal`, and return `true` or `false` depending on whether the goal belongs to the current user or not.
-4. Make use of the `can_edit?` helper method within the `_goal_card` partial to conditionally display the "Edit" button.
+1. Pull up the `current_user` method from the AccountController to the ApplicationController along with the `helper_method` declaration.
+2. Pull up the `ensure_authenticated` method from AccountController to the ApplicationController.
+3. Add a `before_action` filter that calls `ensure_authenticated` for the edit action only within IdeasController. _This needs to be put in place before the next task because users must be authenticated before in order to edit an Idea_.
+4. Define a method, `ensure_owner`, in IdeasController that will redirect the user to the  `account_path` if they are not the owner of the Idea. Make use of the `return` keyword as in the example in this unit.
+5. Use a `before_action` filter to call `ensure_owner`. Restrict this filter to only apply to the `ideas#edit` action and no other actions. _This filter must be be declared after the  `ensure_authenticated` action filter from task 3_.
