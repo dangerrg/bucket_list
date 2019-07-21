@@ -1,16 +1,6 @@
-Tasks Unit 07. Listing a user's goals
+Tasks Unit 09. Defining a custom helper method
 
-1. Create the `/account/goals` route, `account#goals` controller action, and empty  `account/goals.html.erb` view for the My Goals section. The `account#goals` action should assign the current user's goals to an instance variable, `@goals`. Make sure that the `account#goals` action is authenticated before it is executed.
-2. Copy the content of `ideas/index.html.erb` into the `account/goals.html.erb` view to get a starting point for the My goals view and make the following changes in the new `account/goals.html.erb` view:
-    1. Replace the `"Results for ..."` text with the title `My goals`.
-    2. Replace the No ideas found! text with the text  `You don't currently have any goals..`
-    3. Replace the usages of `@ideas` with the `@goals` instance variable.
-    4. Remove the `<%= render ... %>` expression; we'll be building the partial for this in the next unit.
-3. Use the `account#goals` route as the link for `My goals` in the sub nav on the  `account/edit.html.erb` view.
-4. Copy the sub-navigation from the `account/edit.html.erb` view into the
-`account/goals.html.erb` view. Adjust the item that has the `current` CSS class so
-that "Goals" is highlighted instead of "Account" and that the "Account" link
-links back to the `account#edi`t route. _It's possible to extract a partial for the
-account sub-nav, however it is more complex to implement than it first seems. If
-you're feeling confident, have a think about how to do this so that the current
-item can be selected in the partial._
+1. Create the `app/views/account/_goal_card.html.erb` partial. Use the attached static HTML as a template and complete all of the dynamic text in the partial. Use a partial parameter, `goal`, for all of the dynamic fields but remember that this variable is an instance of an _Idea_. Look at  `application/_idea_card.html.erb` and `account/_editable_idea_card.html.erb` for reference to implement the partial.
+2. Make use of the `_goal_card` partial within the `account/goals.html.erb` view to render all of a User's goals.
+3. Create a helper method `can_edit?` within the ApplicationHelper that will take one parameter, `goal`, and return `true` or `false` depending on whether the goal belongs to the current user or not.
+4. Make use of the `can_edit?` helper method within the `_goal_card` partial to conditionally display the "Edit" button.
