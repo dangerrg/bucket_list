@@ -1,0 +1,20 @@
+<main>
+  <div class="content-wrapper">
+    <h1>My goals</h1>
+  </div>
+  <div class="content-wrapper">
+    <% if(@goals.any?) %>
+      <ul class="bare-list float-grid css-grid">
+        <% @goals.each do |goal| %>
+          <li>
+          </li>
+        <% end %>
+      </ul>
+      <div class="see-more">
+        <button class="btn" type="button" data-more="true">See more</button>
+      </div>
+    <% else %>
+      <h3>You don't currently have any goals.</h3>
+    <% end %>
+  </div>
+</main>
