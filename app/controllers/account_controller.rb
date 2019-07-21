@@ -1,7 +1,10 @@
 class AccountController < ApplicationController
   before_action :ensure_authenticated
-  
+
   helper_method :current_user
+
+  def edit
+  end
 
   def ideas
     user = User.find(session[:user_id])
