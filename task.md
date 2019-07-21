@@ -1,5 +1,4 @@
-Tasks Unit 18. Logging out
+Tasks Unit 03. Protecting a resource
 
-1. Restrict the `:sessions` resource to only map `:new`, `:create`, and `:destroy` actions.
-2. Include the expression `<%= javascript_include_tag 'application' %>` within the `<head>` of the  `application.html.erb` file so that Rails includes the Javascript links in all views.
-3. Implement a log out feature that will delete the currently logged in user's session and hook up the "Log out" link in the `_authenticated_user_header.html.erb` partial to trigger this action.
+1. Create a `before_action` filter in the AccountController that ensures the current user is authenticated before executing the `ideas` action. The attached method should redirect to the log in form if the user is not logged in.
+2. Filter the results set for the `account/ideas.html.erb` view so that only the Ideas belonging to the currently logged in user are displayed.
