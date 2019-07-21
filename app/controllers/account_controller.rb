@@ -18,10 +18,6 @@ class AccountController < ApplicationController
     @goals = current_user.goals
   end
 
-  def ensure_authenticated
-    redirect_to login_path unless(logged_in?)
-  end
-
   private
 
   def user_params
