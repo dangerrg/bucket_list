@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 class IdeasController < ApplicationController
+  before_action :ensure_authenticated, only: :edit
   def index
     @search_term = params[:q]
     logger.info("Search completed using #{@search_term}.")
