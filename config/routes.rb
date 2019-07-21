@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   root to: 'home#index'
 
@@ -21,6 +19,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get 'account', to: 'account#edit'
+  patch 'account', to: 'account#update'
   get 'account/ideas'
 
   get 'login', to: 'sessions#new'
