@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :ensure_authenticated, only: [:edit, :update] #this will stop any resources being loaded unnecessarily for anonymous users
+  before_action :ensure_authenticated, only: [:new, :create, :edit, :update] #this will stop any resources being loaded unnecessarily for anonymous users
   before_action :load_idea,            only: [:edit, :update] #this will load Idea record before executing `ensure_owner` filter
   before_action :ensure_owner,         only: [:edit, :update] #this make use of the Idea instance
 
