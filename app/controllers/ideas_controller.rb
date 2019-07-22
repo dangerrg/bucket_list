@@ -37,12 +37,9 @@ class IdeasController < ApplicationController
   end
 
   def edit
-    id = params[:id] # extract the identifier from the params Hash
-    @idea = Idea.find(id)
   end
 
   def update
-    @idea = Idea.find(params[:id])
     if @idea.update(idea_resource_params)
       redirect_to(account_ideas_path)
     else
@@ -57,9 +54,9 @@ class IdeasController < ApplicationController
   end
 
   def ensure_owner
-    idea = Idea.find(params[:id])
+    @idea = Idea.find(params[:id])
 
-    if(idea.user == current_user)
+    if(@idea.user == current_user)
       return
     end
 
