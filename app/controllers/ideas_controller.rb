@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
-  before_action :ensure_authenticated, only: [:edit, :update]
-  before_action :ensure_owner,         only: [:edit, :update]
+  before_action :ensure_authenticated, only: [:edit, :update] #this will stop any resources being loaded unnecessarily for anonymous users
+  before_action :load_idea,            only: [:edit, :update] #this will load Idea record before executing `ensure_owner` filter
+  before_action :ensure_owner,         only: [:edit, :update] #this make use of the Idea instance
 
   def index
     @search_term = params[:q]
@@ -53,9 +54,11 @@ class IdeasController < ApplicationController
     params.require(:idea).permit(:title, :description, :photo_url, :done_count, :name_of_user)
   end
 
-  def ensure_owner
+  def load_idea
     @idea = Idea.find(params[:id])
+  end
 
+  def ensure_owner
     if(@idea.user == current_user)
       return
     end
