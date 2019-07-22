@@ -1,10 +1,8 @@
-Tasks Unit 13. Authorization with more action filters
+Tasks Unit 16. Keeping authorization rules tidy
 
-1. Ensure that only the owner of an Idea is allowed to submit updates to the  `ideas#update` action.
-2. Improve the performance of the `current_user` method by implementing a _lazy loading_ routine.
-3. Improve the performance of the `ideas#edit` and `ideas#update` method by loading the Idea instance only once.
-4. Extract a new method from the `ensure_owner` method that is specifically for loading the Idea record and assigning it to the instance variable `@idea`. Declare this method as a `before_action` filter that is executed _before_ `ensure_owner`.
-5. Ensure that users are authenticated in order to access the `ideas#new` and  `ideas#create` actions.
-6. In the CommentsController, use a `before_action` filter to ensure that the current user is authenticated. Make use of the `current_user` method instead of retrieving the User explicitly in this controller.
-7. In the GoalsController, use a `before_action` filter to ensure that the
-current user is authenticated. Also make sure that a goal can only ever be added to the goals collection of the currently logged in User.
+1. Add a `:role` attribute as a String to the User model. Make sure that all existing Users in the database have the default role, `'registered'`, using `update_all` in the rails console.
+2. Alter the `can_edit?` method in the ApplicationHelper so that it returns `true` if the  `User#role` is `'admin'`, `true` if the `User#role` is `'registered'` and the `current_user` owns the requested Idea, and false in all other cases. A `case` statement is useful here.
+3. Alter the `ensure_owner` method so that users with the `'admin'` role are able to edit any Idea regardless of who owns it.
+4. Create a module called RolesHelper in `app/helpers/roles_helper.rb` and move the  `can_edit?` method from ApplicationHelper to this new module.
+5. Include the Roles module in the IdeasController and make use of  `RolesHelper#can_edit?` in the `IdeasController#ensure_owner` method to indicate whether the current user has permission to edit the requested Idea or not.
+Rename the `ensure_owner` method to `authorize_to_edit_idea`. _Don't forget to change the references to `ensure_owner` as well!_
