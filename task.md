@@ -1,7 +1,10 @@
-Tasks Unit 11. Securing owned resources
+Tasks Unit 13. Authorization with more action filters
 
-1. Pull up the `current_user` method from the AccountController to the ApplicationController along with the `helper_method` declaration.
-2. Pull up the `ensure_authenticated` method from AccountController to the ApplicationController.
-3. Add a `before_action` filter that calls `ensure_authenticated` for the edit action only within IdeasController. _This needs to be put in place before the next task because users must be authenticated before in order to edit an Idea_.
-4. Define a method, `ensure_owner`, in IdeasController that will redirect the user to the  `account_path` if they are not the owner of the Idea. Make use of the `return` keyword as in the example in this unit.
-5. Use a `before_action` filter to call `ensure_owner`. Restrict this filter to only apply to the `ideas#edit` action and no other actions. _This filter must be be declared after the  `ensure_authenticated` action filter from task 3_.
+1. Ensure that only the owner of an Idea is allowed to submit updates to the  `ideas#update` action.
+2. Improve the performance of the `current_user` method by implementing a _lazy loading_ routine.
+3. Improve the performance of the `ideas#edit` and `ideas#update` method by loading the Idea instance only once.
+4. Extract a new method from the `ensure_owner` method that is specifically for loading the Idea record and assigning it to the instance variable `@idea`. Declare this method as a `before_action` filter that is executed _before_ `ensure_owner`.
+5. Ensure that users are authenticated in order to access the `ideas#new` and  `ideas#create` actions.
+6. In the CommentsController, use a `before_action` filter to ensure that the current user is authenticated. Make use of the `current_user` method instead of retrieving the User explicitly in this controller.
+7. In the GoalsController, use a `before_action` filter to ensure that the
+current user is authenticated. Also make sure that a goal can only ever be added to the goals collection of the currently logged in User.
