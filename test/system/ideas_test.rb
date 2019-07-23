@@ -115,7 +115,7 @@ class IdeasTest < ApplicationSystemTestCase
     visit(new_session_path)
     fill_in('Email', with: user.email)
     fill_in('Password', with: user.password)
-    click_on('Log in')
+    find(:button, 'Log in').click #This ensure to click_on the Login button only
 
     visit(new_idea_path)
     fill_in('Done count', with: 32)
