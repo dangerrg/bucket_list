@@ -18,4 +18,13 @@ class RolesHelperTest < ActionView::TestCase
     idea = Idea.create(title: 'A test idea!', user: owner)
     assert can_edit?(idea)
   end
+
+  test 'idea cannot be edited by another owner' do
+    other = User.create(email: 'admin@epfl.ch', password: 'password')
+    self.current_user = other
+
+    owner = User.create(email: 'owner@epfl.ch', password: 'password')
+    idea = Idea.create(title: 'A test idea!', user: owner)
+    refute can_edit?(idea)
+  end
 end
