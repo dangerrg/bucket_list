@@ -9,4 +9,13 @@ class RolesHelperTest < ActionView::TestCase
     idea = Idea.create(title: 'A test idea!', user: owner)
     assert can_edit?(idea)
   end
+
+  test 'idea can be edited by an admin' do
+    admin = User.create(email: 'admin@epfl.ch', password: 'password', role: 'admin')
+    self.current_user = admin
+
+    owner = User.create(email: 'owner@epfl.ch', password: 'password')
+    idea = Idea.create(title: 'A test idea!', user: owner)
+    assert can_edit?(idea)
+  end
 end
