@@ -1,7 +1,5 @@
-Tasks Unit 20. More super user abilities
+Tasks Unit 02. Creating scopes
 
-1. Add an `edit` action to UsersController that will display the `account/edit.html.erb` form for the user specified in the request URL. Also add an empty `update` action. In the router, restrict the controller actions that will be mapped by the `:users` resource to only `:new`, `:create`, `:edit`, and `:update`.
-2. Add a `before_action` filter that restricts access to the `users#edit` and `users#update` action to just Users with the `'admin'` role.
-3. Create the `users/edit.html.erb` view. Copy the form structure from the  `users/new.html.erb` view, making any text changes that are necessary. Remove the  `:password` field and add a dropdown using the `select` form helper to modify the user `role` attribute. The dropdown should include the values `'registered'` and  `'admin'`. Also add fields to edit the `:name` and `:avatar_url` attributes.
-4. Implement the `users#update` action to update the details submitted in the form, rendering the form again if there are validation errors and redirecting to  `account_path` if the update is successful. Permit the `:email`, `:name`, `:photo_url`, and `:role` to be submitted, but _not_ the `:password` field. Do _not_ permit the `:role` attribute to be submitted to the `users#create` action.
-5. _At this point, depending on how you built the form, the style of this form could be inconsistent. Optionally take the opportunity to brush up on using CSS classes to make the `users/edit.html.erb` form have a consistent visual style with the  `ideas/edit.html.erb` form. This is the correct style for this type of form according to the style guide_.
+1. Replace the `.most_recent` class method with a scope called `most_recent` that behaves in the same way. Run the model unit tests to ensure that this change is a _refactoring_ and does not change the behavior of the Idea model.
+2. Define a new scope called `title_contains` that accepts one parameter, term. The scope will return all Ideas that have a `:title` containing the `term` parameter anywhere.
+3. Define a new scope called `description_contains` that accepts one parameter, `term`. The scope will return all Ideas that have a `:description` containing the `term` parameter anywhere.
