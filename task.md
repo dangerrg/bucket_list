@@ -1,6 +1,6 @@
-Tasks Unit 06. Creating lots of data
+Tasks Unit 08. Paging the search results
 
-1. In the `db/seeds.rb` file, add expressions that will create one admin User and three registered Users. Give each User an `:email`, `:password` and `:name`.
-2. In the `db/seeds.rb` file, add expressions that will create five Ideas for each User from task 1. Make sure that each Idea has a `:title`, although the titles can be whatever you choose. Try to set the `:photo_url` for some Ideas if you have adequate images.
-3. In the `db/seeds.rb` file, add an expression that will add the first Idea for the three Users to the `:goals` for the admin User.
-4. Run `rails db:setup` to clear the current development database and insert the new seed data. _If you want to make a backup of the database before running this command, simply copy `db/development.sqlite3` to somewhere safe._
+1. Add the `kaminari` gem to the `Gemfile` and install it using `bundle install`. _Make sure that any running Rails server is restarted as well._
+2. Set the results-per-page for the Ideas model to 9, using `paginates_per`.
+3. Make sure that the `@ideas` result set can be paged in the `ideas#index` action, using the `.page` method and the :page parameter.
+4. Include the pagination controls in the `app/views/ideas/index.html.erb` view using the `paginate` helper method.
