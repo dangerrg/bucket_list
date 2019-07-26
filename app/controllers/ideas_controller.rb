@@ -2,8 +2,8 @@ class IdeasController < ApplicationController
   include RolesHelper
 
   before_action :ensure_authenticated,   only: [:new, :create, :edit, :update] #this will stop any resources being loaded unnecessarily for anonymous users
-  before_action :load_idea,              only: [:edit, :update] #this will load Idea record before executing `ensure_owner` filter
-  before_action :authorize_to_edit_idea, only: [:edit, :update] #this make use of the Idea instance
+  before_action :load_idea,              only: [:edit, :update, :destroy] #this will load Idea record before executing `ensure_owner` filter
+  before_action :authorize_to_edit_idea, only: [:edit, :update, :destroy] #this make use of the Idea instance
 
   def index
     @search_term = params[:q]
@@ -47,6 +47,10 @@ class IdeasController < ApplicationController
       redirect_to(account_ideas_path)
     else
       render 'edit'
+    end
+
+    def destroy
+      @idea.destroy!
     end
   end
 
