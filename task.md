@@ -1,6 +1,7 @@
-Tasks Unit 08. Paging the search results
+Tasks Unit 04. Building an asynchronous delete
 
-1. Add the `kaminari` gem to the `Gemfile` and install it using `bundle install`. _Make sure that any running Rails server is restarted as well._
-2. Set the results-per-page for the Ideas model to 9, using `paginates_per`.
-3. Make sure that the `@ideas` result set can be paged in the `ideas#index` action, using the `.page` method and the :page parameter.
-4. Include the pagination controls in the `app/views/ideas/index.html.erb` view using the `paginate` helper method.
+1. Make sure that the JavaScript manifest file is included in the `<head>` of the application layout.
+2. Implement the `ideas#destroy action`, using `#destroy!` to delete the Idea record from the DB. Ensure that only the owner of the Idea or an admin user is permitted to delete the Idea. _It's possible to make use of the load_idea action filter to retrieve the Idea that will be deleted._
+3. Implement the "Delete" button in the` _editable_idea_card.html.erb` partial. Make the delete action submit asynchronously.
+4. Add an ID attribute to the outermost element of the `_editable_idea_card.html.erb` partial. Format the ID `idea-<idea-id>`, where `<idea-id>` is the ID of the Idea being rendered.
+5. Create a dynamic JavaScript file that will remove the card element, including parent `<li>` element, for the Idea that has just been deleted in `ideas#destroy`.
