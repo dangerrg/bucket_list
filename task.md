@@ -1,7 +1,8 @@
-Tasks Unit 04. Building an asynchronous delete
+Tasks Unit 06. An asynchronous form
 
-1. Make sure that the JavaScript manifest file is included in the `<head>` of the application layout.
-2. Implement the `ideas#destroy action`, using `#destroy!` to delete the Idea record from the DB. Ensure that only the owner of the Idea or an admin user is permitted to delete the Idea. _It's possible to make use of the load_idea action filter to retrieve the Idea that will be deleted._
-3. Implement the "Delete" button in the` _editable_idea_card.html.erb` partial. Make the delete action submit asynchronously.
-4. Add an ID attribute to the outermost element of the `_editable_idea_card.html.erb` partial. Format the ID `idea-<idea-id>`, where `<idea-id>` is the ID of the Idea being rendered.
-5. Create a dynamic JavaScript file that will remove the card element, including parent `<li>` element, for the Idea that has just been deleted in `ideas#destroy`.
+1. Make the comment form in `app/views/ideas/show.html.erb` submit asynchronously using `remote: true`. Also add the unique id attribute `commentList` to the `<ul>` element that contains the comments.
+2. Update the `comments#create` controller action so that it assigns the new Comment to an instance variable `@comment`. Make sure that the action renders the default view rather than redirecting to idea_path.
+3. Create the file `app/views/comments/create.js.erb`. Use the JavaScript example from this unit as the contents.
+4. Update the `comments/create.js.erb` view so that the value of `@comment.body` is used as the text in `commentParagraph`.
+5. Update the `comments/create.js.erb` view so that the value of `@comment.user.name` is used as the text in `commentHeader`.
+6. Update the `comments/create.js.erb` view so that the value of `@comment.created_at` is used as the text in `commentTime`. Use Rails' `time_ago_in_words` helper method to output reader-friendly text for the time that the Comment was created. _The  `datetime` attribute of `commentTime` doesn't need to be set as part of this task but do that too if you feel confident._
