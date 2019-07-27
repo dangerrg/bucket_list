@@ -48,10 +48,10 @@ class IdeasController < ApplicationController
     else
       render 'edit'
     end
+  end
 
-    def destroy
-      @idea.destroy!
-    end
+  def destroy
+    @idea.destroy!
   end
 
   private
