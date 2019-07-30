@@ -1,6 +1,7 @@
-Tasks Unit 10. Handling response formats
+Tasks Unit 12. Using JavaScript files
 
-1. Make use of `respond_to` in the `goals#create` action so that it will handle both HTML and JS formats. JS format should render a view matching the action name, `create`.
-2. Make the "Add Goal" button in `app/views/application/_idea_card.html.erb` submit to the `user_goals_path` route _asynchronously_. Also include an id attribute on the  `<form>` tag that is formatted `goal-<id>`, where `<id>` is the value of the Idea for that card.
-3. Within `goals#create`, assign the retrieved Idea to an instance variable `@idea`.
-4. Create a new JS view `app/views/goals/create.js.erb`. Use the JavaScript code sample above as the contents for this file, making sure that the ERB expressions and `id` attributes match the names of those used in tasks 1 to 3.
+1. Make sure that the app is configured to generate JavaScript files, not CoffeeScript files.
+2. Rename `app/assets/javascripts/ideas.coffee` to `app/assets/javascripts/ideas.js`. Define an empty object, `Ideas`, within it.
+3. Refactor `ideas/destroy.js.erb` by moving the implementation to a function called  removeIdeaCard in the Ideas object. Call this function from `ideas/destroy.js.erb`, rendering the `@idea.id` as a JavaScript String parameter for the `removeIdeaCard` function.
+4. Rename `app/assets/javascripts/comments.coffee` to  `app/assets/javascripts/comments.js`. Define an empty object, `Comments`, within it.
+5. Refactor `comments/create.js.erb` by moving the functionality to a function called  `displayComment` in the `Comments` object. It'll be necessary to pass the comment body, relative time, and creator's name to this function. This is best achieved by passing a single JavaScript object with properties for each value. Call the `displayComment` function from `comments/create.js.erb`, rendering the comment body, relative time, and comment creator's name as String properties for a JavaScript object that gets passed as the parameter for `displayComment`. As always, be careful to include ERB expressions within the quotes for JavaScript literal Strings. _Optionally organize the code within `displayComment` into smaller individual JavaScript functions_.
