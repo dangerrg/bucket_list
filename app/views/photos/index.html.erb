@@ -21,7 +21,7 @@
               <%= submit_tag('Use this photo', class: 'btn btn--primary prompt__confirm') %>
             </div>
           <% end %>
-          <p>Photo taken by <%= @photo.user.name %>, available at <a href="https://unsplash.com">unsplash.com</a></p>
+          <p>Photo taken by <%= @photo.user.name %>, available at <%= link_to('unsplash.com', @photo.links.html) %></p>
         </li>
       </ul>
     </div>
