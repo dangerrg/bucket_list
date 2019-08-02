@@ -6,10 +6,10 @@ class PhotosController < ApplicationController
   before_action :authorize
 
   def index
-    query = params[:query]
-    query = @idea.title if query.blank?
+    @query = params[:query]
+    @query = @idea.title if @query.blank?
 
-    @photos = Unsplash::Photo.random(query: query, count: 3) # this returns an array of photos
+    @photos = Unsplash::Photo.random(query: @query, count: 3) # this returns an array of photos
   end
 
   def create
