@@ -1,7 +1,9 @@
-Tasks Unit 12. Using JavaScript files
+Tasks Unit 05. Using an API in Ruby
 
-1. Make sure that the app is configured to generate JavaScript files, not CoffeeScript files.
-2. Rename `app/assets/javascripts/ideas.coffee` to `app/assets/javascripts/ideas.js`. Define an empty object, `Ideas`, within it.
-3. Refactor `ideas/destroy.js.erb` by moving the implementation to a function called  removeIdeaCard in the Ideas object. Call this function from `ideas/destroy.js.erb`, rendering the `@idea.id` as a JavaScript String parameter for the `removeIdeaCard` function.
-4. Rename `app/assets/javascripts/comments.coffee` to  `app/assets/javascripts/comments.js`. Define an empty object, `Comments`, within it.
-5. Refactor `comments/create.js.erb` by moving the functionality to a function called  `displayComment` in the `Comments` object. It'll be necessary to pass the comment body, relative time, and creator's name to this function. This is best achieved by passing a single JavaScript object with properties for each value. Call the `displayComment` function from `comments/create.js.erb`, rendering the comment body, relative time, and comment creator's name as String properties for a JavaScript object that gets passed as the parameter for `displayComment`. As always, be careful to include ERB expressions within the quotes for JavaScript literal Strings. _Optionally organize the code within `displayComment` into smaller individual JavaScript functions_.
+1. Register as a user and as a developer at https://unsplash.com.
+2. Register an application called `"Bucket List"` in the Unsplash developer dashboard.
+3. Practice using the `/photos/random` endpoint in the browser. Don't forget to include the application ID as the `client_id` query string parameter!
+4. Install the `unsplash` gem and load the gem in an IRB session.
+5. Within the IRB session:
+    1. Configure the `unsplash` gem with your application ID and also a `utm_source` of  `'exts-fullstack'`.
+    2. Practise using the Unsplash::Photos class to return a random photo and to search for photos matching a search term. See how to access the different photo URLs and the photographer details in the objects that are returned by the `.random` and `.search` methods.
