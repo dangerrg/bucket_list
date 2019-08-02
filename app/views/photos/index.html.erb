@@ -8,7 +8,7 @@
     </nav>
     <h1>Suggested</h1>
     <div class="content-wrapper">
-      <form class="form--inpage" action="#" method="GET">
+      <%= form_tag(idea_photos_path(@idea), method: :get, class: 'form--inpage') do %>
         <div class="input-inline">
           <label class="input-group__label" for="query">Change search term</label>
           <div class="input-row">
@@ -16,7 +16,7 @@
             <button class="btn btn--primary btn--inline" type="submit">Go</button>
           </div>
         </div>
-      </form>
+      <% end %>
 
       <ul class="bare-list float-grid css-grid">
         <% @photos.each do |photo| %>
