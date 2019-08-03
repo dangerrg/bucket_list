@@ -1,6 +1,7 @@
-Tasks Unit 04. Using CarrierWave
+Tasks Unit 06. Uploading in the front end
 
-1. Add the `carrierwave` gem to the Gemfile, ensuring that the gem is pinned to the latest patch version under `1.1`. Also create an initializer file that contains the configuration in this written unit.
-2. Generate a new uploader in the app called AvatarUploader.
-3. Add a new attribute `:avatar` to the User model.
-4. Mount the new AvatarUploader in the User model.
+1. Save the `avatar.png` image attached to the resources in this unit in  `app/assets/images/`.
+2. Add `public/uploads/*` as a line to the `.gitignore` file.
+3. Add a `file_field` to the `app/views/account/edit.html.erb` view to allow User's to upload an avatar. Use the `:avatar` attribute to back this field. Make sure that the  `:avatar` attribute is a permitted field in the AccountController.
+4. Use the image from task 1 as the default image in the AvatarUploader.
+5. Display the `User#avatar` as an `<img>` element at the last child of the `<h1>` element in `app/views/account/edit.html.erb`.
