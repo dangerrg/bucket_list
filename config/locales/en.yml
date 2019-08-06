@@ -1,4 +1,6 @@
 en:
-  Inspiration: 'Inspiration'
+  account:  'My account'
+  inspiration: 'Inspiration'
   login:  'Log in'
+  logout:  'Log out'
   signup:  'Sign up'
