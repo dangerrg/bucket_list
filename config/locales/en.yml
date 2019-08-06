@@ -1,6 +1,12 @@
 en:
-  account:  'My account'
+  account: 'My account'
   inspiration: 'Inspiration'
-  login:  'Log in'
-  logout:  'Log out'
-  signup:  'Sign up'
+  login: 'Log in'
+  logout: 'Log out'
+  signup: 'Sign up'
+  helpers:
+    label:
+      user:
+        email: 'Email'
+        name: 'Name'
+        avatar: 'Avatar'
