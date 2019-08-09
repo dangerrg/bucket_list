@@ -35,18 +35,17 @@
         </div>
         <nav class="footer__navigation">
           <ul>
-            <li>
-              <a href="#nolink">About</a>
-            </li>
-            <li>
-              <%= link_to('Style guide', styles_atoms_path) %>
-            </li>
-            <li>
-              <a href="#nolink">Terms of Use</a>
-            </li>
+            <li><a href="#nolink">About</a></li>
+            <li><%= link_to('Style guide', styles_atoms_path) %></li>
+            <li><a href="#nolink">Terms of Use</a></li>
           </ul>
         </nav>
-        <p class="copyright">&copy; EPFL 2017</p>
+        <div>
+          <% I18n.available_locales.each do |locale| %>
+            <%= link_to locale, url_for(locale: locale) %>
+          <% end %>
+          <p class="copyright">&copy; EPFL 2017</p>
+        </div>
       </div>
     </footer>
 
