@@ -1,6 +1,13 @@
-Tasks Unit 13. Selecting a language
+Tasks Unit 04. Launching in production mode
 
-1. Ensure that the locale is included in all path helpers as a default parameter. _We do this first because some of our path helpers will break in task 2 without the locale included by default_.
-2. Define a scope in `config/routes.rb` that contains all routes defined in the router. Define the scope as a single parameter template, `:locale`. _The application root, `/`, no longer works after this change; determine how to fix the router so that the root path works again_.
-3. Add a `before_action` filter that will set the `I18n.locale` for every controller action.
-4 Add links to the footer of the `app/views/layouts/application.hmtl.erb` layout that will allow a User to change the locale for the current page that they are on.
+Now try launching your own app in production mode. First, add `public/assets/*` to the  `.gitignore` file. This is so that no compiled assets accidentally get added to source control.
+
+For steps 2-7, you can try running the start up script from task 1 and look at the errors produced either on the terminal or in the `log/production.log` file.
+
+1. Create a script called `run-production.sh` and add  `rails server --environment production` as the first line.
+2. Use `chmod +x` in the terminal to modify `run-production.sh` to make it executable.
+3. Create a new secret key value using `rails secret` in the terminal.
+4. Add export `SECRET_KEY_BASE=secret` at the top of `run-production.sh`, where secret is the value from 5.
+5. Create a database for production mode using `RAILS_ENV=production rails db:setup`.
+6. Pre-compile all assets using `RAILS_ENV=production rails assets:precompile`.
+7. Allow the `public/` folder to be served in production mode by adding  `export` RAILS_SERVE_STATIC_FILES=true `to the top of` run-production.rb`.
