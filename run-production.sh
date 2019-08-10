@@ -1,2 +1,3 @@
 export SECRET_KEY_BASE=e968bcdade949120e8add18b72950e0bd70369d60afe08d26a6fa7111ce72353ac6fff7087a76d90c3e61c39fe517e65005f74fd27fcac75c78b0e585bc0c180
+export RAILS_SERVE_STATIC_FILES=true
 rails server --environment production
