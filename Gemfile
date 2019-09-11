@@ -78,3 +78,5 @@ gem 'carrierwave', '~> 1.1.0'
 gem "figaro"
 
 gem "fog-aws"
+
+gem "nokogiri", ">= 1.10.4"

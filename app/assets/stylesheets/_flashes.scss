@@ -1,14 +1,10 @@
 .message-container {
-  margin-bottom: 1.6rem;
-
-  .alert {
-    color: #e25d43;
-  }
-
-  .notice {
-  }
-
-  .success {
-    color: #44e26b;
-  }
+    margin-bottom: 1.6rem;
+    .alert {
+        color: #e25d43;
+    }
+    .notice {}
+    .success {
+        color: #44e26b;
+    }
 }
