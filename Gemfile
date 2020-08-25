@@ -80,3 +80,5 @@ gem "figaro"
 gem "fog-aws"
 
 gem "nokogiri", ">= 1.10.4"
+
+gem "activesupport", ">= 5.2.4.3"
