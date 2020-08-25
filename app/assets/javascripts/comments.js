@@ -1,8 +1,10 @@
+var Comments;
+
 Comments = {};
 
-Comments.displayComment = function(comment) {
+Comments.buildComment = function (comment) {
   var commentTime = document.createElement('time');
-  commentTime.setAttribute('datetime', comment.datetime);
+  commentTime.setAttribute('datetime', '2017-11-28T13:48');
   commentTime.appendChild(document.createTextNode(comment.when));
 
   var commentHeader = document.createElement('h3');
@@ -26,7 +28,13 @@ Comments.displayComment = function(comment) {
   commentListItem.className = 'comment';
   commentListItem.appendChild(avatar);
   commentListItem.appendChild(commentBody);
+  return commentListItem;
+}
 
-  var comments = document.getElementById('commentList');
-  comments.insertBefore(commentListItem, comments.firstChild);
-};
+Comments.addComment = function (comment) {
+  var newComment, comments;
+
+  newComment = Comments.buildComment(comment);
+  comments = document.getElementById('commentList');
+  comments.insertBefore(newComment, comments.firstChild);
+}

@@ -81,7 +81,7 @@
 
       <% if(@display_add_comment) %>
         <%= form_for([@idea, @comment], html: { class: 'comments__input' }, remote: true) do |form| %>
-          <%= image_tag('avatar', alt: 'Default avatar') %>
+          <%= image_tag('avatar.png', alt: 'Default avatar') %>
           <div class="input-group">
             <%= form.label(:body, 'Add a comment', class: 'input-group__label') %>
             <%= form.text_area(:body, class: 'input-group__field') %>
@@ -93,9 +93,9 @@
       <ul class="comments__listing" id="commentList">
        <% @idea.comments.each do |comment| %>
         <li class="comment">
-          <%= image_tag('avatar', alt: 'Default avatar') %>
+          <%= image_tag('avatar.png', alt: 'Default avatar') %>
           <div class="comment__body">
-            <h3 class="comment__title">Tom Jenkinson
+            <h3 class="comment__title"><%= @user.email %>
               <time datetime="2017-08-28T13:48"><%= comment.created_at.strftime("%d %b '%y") %></time>
             </h3>
             <p><%= comment.body %></p>

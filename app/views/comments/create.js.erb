@@ -1,8 +1,11 @@
 var comment = {
-  'datetime': '<%= @comment.created_at.strftime('%FT%R') %>',
-  'when': '<%= time_ago_in_words(@comment.created_at) %>',
+  'body': '<%= @comment.body %>',
   'commenter': '<%= @comment.user.name %> ',
-  'body': '<%= @comment.body %>'
+  'when': '<%= time_ago_in_words(@comment.created_at) %>'
 };
 
-Comments.displayComment(comment);
+Comments.addComment(comment);
+
+console.log(comment); //Output the created comment in the console
+
+document.getElementById('comment_body').value = ''; // Clear up the textarea after comment is rendered
