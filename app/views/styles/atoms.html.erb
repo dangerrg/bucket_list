@@ -1,4 +1,3 @@
-ı
 <main class="content-wrapper">
   <div>
     <h1>Style Guide</h1>
@@ -7,11 +6,11 @@
     </p>
     <nav>
       <ul class="sub-navigation">
-        <%= render(partial: 'sub_nav_item', locals: { title: 'Atoms', uri: '/styles/atoms', current: true }) %>
-        <%= render(partial: 'sub_nav_item', locals: { title: 'Molecules', uri: '/styles/molecules', current: false }) %>
-        <%= render(partial: 'sub_nav_item', locals: { title: 'Organisms', uri: '/styles/organisms', current: false }) %>
+        <%= render(partial: 'sub_nav_item', locals: { title: 'Atoms', uri: styles_atoms_path, current: true }) %>
+        <%= render(partial: 'sub_nav_item', locals: { title: 'Molecules', uri: styles_molecules_path, current: false }) %>
+        <%= render(partial: 'sub_nav_item', locals: { title: 'Organisms', uri: styles_organisms_path, current: false }) %>
         <li>
-          <a href="templates.html">Templates</a>
+          <a href="#templates.html">Templates</a>
         </li>
         <li>
           <a href="#pages">Pages</a>

@@ -1,12 +1,16 @@
 <main class="content-wrapper">
   <div>
+    <h1>Style Guide</h1>
+    <p>
+      Our Style Guide is based upon the principles of Atomic design, a methodology composed of five distinct stages working together to create interface design systems in a more deliberate and hierarchical manner.
+    </p>
     <nav>
       <ul class="sub-navigation">
-        <%= render(partial: 'sub_nav_item', locals: { title: 'Atoms', uri: '/styles/atoms', current: false }) %>
-        <%= render(partial: 'sub_nav_item', locals: { title: 'Molecules', uri: '/styles/molecules', current: false }) %>
-        <%= render(partial: 'sub_nav_item', locals: { title: 'Organisms', uri: '/styles/organisms', current: true }) %>
+        <%= render(partial: 'sub_nav_item', locals: { title: 'Atoms', uri: styles_atoms_path, current: false }) %>
+        <%= render(partial: 'sub_nav_item', locals: { title: 'Molecules', uri: styles_molecules_path, current: false }) %>
+        <%= render(partial: 'sub_nav_item', locals: { title: 'Organisms', uri: styles_organisms_path, current: true }) %>
         <li>
-          <a href="templates.html">Templates</a>
+          <a href="#templates.html">Templates</a>
         </li>
         <li>
           <a href="#pages">Pages</a>

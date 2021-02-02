@@ -7,9 +7,13 @@
       <div class="media__body">
         <div class="goal">
           <div class="goal__owner">
-            <img class="avatar" src="#images/avatar.png" alt="Portrait of Frederick Rose">
+            <%= image_tag('avatar.png', style:"border-radius: 150px", alt: 'Default avatar') %>
             <p>Created by
-              <a href="#">Frederick Rose</a>
+              <% if(logged_in?) %>
+                <a href="#"><%= @user.email %></a>
+              <% else %>
+                <a href="#">Frederick Rose</a>
+              <% end %>
             </p>
           </div>
           <h1 class="gamma"><%= @idea.title %></h1>
