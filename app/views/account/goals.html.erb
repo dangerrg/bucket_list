@@ -20,7 +20,9 @@
         <% end %>
       </ul>
       <div class="see-more">
-        <button class="btn" type="button" data-more="true">See more</button>
+        <%= button_tag(class: "btn", type: "button") do %>
+          <%= link_to "See more", ideas_path %>
+        <% end %>
       </div>
     <% else %>
       <h3>You don't currently have any goals.</h3>

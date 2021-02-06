@@ -6,49 +6,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-
+    <!-- Header -->
     <header>
-      <div class="site-header">
-        <div class="content-wrapper">
-          <div class="logo">
-            <%= link_to('<span><i>My</i> Bucket List</span>'.html_safe, root_path) %>
-          </div>
-          <%= render(partial: 'search_form') %>
-          <% if(logged_in?) %>
-            <%= render partial: 'authenticated_user_header' %>
-          <% else %>
-            <%= render partial: 'anonymous_user_header' %>
-          <% end %>
-        </div>
-      </div>
+      <%= render 'header' %>
     </header>
 
     <%= yield %>
-
+    <!-- Footer -->
     <footer class="site-footer">
-      <div class="content-wrapper">
-        <div class="logo logo--inverted footer__logo">
-          <%= link_to('<span><i>My</i> Bucket List</span>'.html_safe, root_path) %>
-        </div>
-        <nav class="footer__navigation">
-          <ul>
-            <li><a href="#nolink">About</a></li>
-            <li><%= link_to('Style guide', styles_atoms_path) %></li>
-            <li><a href="#nolink">Terms of Use</a></li>
-          </ul>
-        </nav>
-        <div>
-          <% I18n.available_locales.each do |locale| %>
-            <%= link_to locale, url_for(locale: locale) %>
-          <% end %>
-          <p class="copyright">&copy; EPFL 2017</p>
-        </div>
-      </div>
+      <%= render 'footer' %>
     </footer>
 
   </body>
